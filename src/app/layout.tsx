@@ -1,7 +1,8 @@
+"use client";
 import type { Metadata } from "next";
-
-// These styles apply to every route in the application
 import "./globals.css";
+import { SessionProvider } from "next-auth/react";
+import AuthSession from "@/providers/AuthSession";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,7 +16,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <AuthSession>
+        {children}
+        </AuthSession>
+        </body>
     </html>
   );
 }
